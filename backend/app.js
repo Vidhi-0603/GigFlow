@@ -1,5 +1,7 @@
 const authRoutes = require("./src/routes/auth.route.js");
 const gigRoutes = require("./src/routes/gig.route.js");
+const bidRoutes = require("./src/routes/bid.route.js");
+
 const express = require("express");
 const app = express();
 
@@ -17,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/gigs", gigRoutes);
+app.use("/api/bids", bidRoutes);
 
 app.listen(5000, () => {
   console.log("Server running at http://localhost:5000");
