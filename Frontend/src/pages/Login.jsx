@@ -2,7 +2,7 @@ import { useState } from "react";
 import { LogIn, UserPlus, Mail, Lock, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import axiosInstance from "../utils/AxiosInstance";
+import axiosInstance from "../utils/axiosInstance";
 
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);

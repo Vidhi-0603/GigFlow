@@ -1,6 +1,6 @@
 import { Mail } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
-import axiosInstance from "../utils/AxiosInstance";
+import axiosInstance from "../utils/axiosInstance";
 
 export const BidCard = ({ bid, gig }) => {
   const { user } = useAuth();

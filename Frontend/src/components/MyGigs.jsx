@@ -9,7 +9,7 @@ import {
   ChevronLeft,
   Mail,
 } from "lucide-react";
-import axiosInstance from "../utils/AxiosInstance";
+import axiosInstance from "../utils/axiosInstance";
 import { useEffect, useState } from "react";
 import { GigCard } from "./GigCard";
 import { useAuth } from "../context/AuthContext";

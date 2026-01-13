@@ -5,7 +5,7 @@ import {
   X,
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
-import axiosInstance from "../utils/AxiosInstance";
+import axiosInstance from "../utils/axiosInstance";
 import { useState } from "react";
 import { BidCard } from "./BidCard";
 

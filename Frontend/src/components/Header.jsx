@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../utils/AxiosInstance";
+import axiosInstance from "../utils/axiosInstance";
 import { useAuth } from "../context/AuthContext";
 export const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
