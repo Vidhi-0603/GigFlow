@@ -22,6 +22,7 @@ app.options(
     credentials: true,
   })
 );
+
 const connectDB = require("./src/config/mongo.config.js");
 connectDB();
 
