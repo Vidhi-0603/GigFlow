@@ -60,8 +60,7 @@ export default function Login() {
         navigate("/dashboard", { replace: true });
       }
     } catch (error) {
-      console.error(error.response?.data?.message || "Authentication failed");
-    }
+      console.error(error);
   };
 
   const toggleForm = () => {

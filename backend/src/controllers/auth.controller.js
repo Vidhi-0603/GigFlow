@@ -5,12 +5,16 @@ const { cookieOptions } = require("../config/cookie.config");
 
 const registerUser = async (req, res, next) => {
   try {
+    console.log(req.body,"req body");
+    
     const { name, email, password } = req.body;
     if (!name || !email || !password) {
       return res.status(400).json({ message: "credentials missing" });
     }
 
     const userExists = await userModel.findOne({ email });
+    console.log(userExists,"userExists");
+    
     if (userExists)
       return res.status(400).json({ message: "User already exists!" });
 
@@ -23,10 +27,15 @@ const registerUser = async (req, res, next) => {
       password: hashedPassword,
     });
 
+    console.log(user,"user");
+    
+
     const token = jwt.sign({ id: user._id }, process.env.JWTSECRET, {
       expiresIn: "1h",
     });
 
+    console.log(token,"token");
+    
     res.cookie("accessToken", token, cookieOptions);
     res.status(201).json({ message: "User created successfully", user, token });
   } catch (err) {

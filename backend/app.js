@@ -15,7 +15,13 @@ app.use(
     credentials: true,
   })
 );
-
+app.options(
+  "*",
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+  })
+);
 const connectDB = require("./src/config/mongo.config.js");
 connectDB();
 
