@@ -65,4 +65,18 @@ const loginUser = async (req, res, next) => {
   }
 };
 
-module.exports = { registerUser, loginUser };
+const authUser = async (req, res) => {
+  return res.status(200).json({ user:req.user });
+};
+const logoutUser = async (req, res) => {
+  try {
+    res.clearCookie("accessToken", cookieOptions);
+    res.status(200).json({ message: "Logged out successfully" });
+  } catch (err) {
+    console.error("Error in logout route:", err.message);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+
+module.exports = { registerUser, loginUser, authUser , logoutUser};

@@ -4,6 +4,8 @@ const gigModel = require("../models/gig.model");
 
 const submitBid = async (req, res) => {
   try {
+    console.log("req.body: ", req.body);
+    
     const { gigId, message } = req.body;
     if (!gigId || !message)
       return res.status(400).json({ message: "GigId or message is missing!" });
@@ -34,9 +36,8 @@ const submitBid = async (req, res) => {
       message,
     });
     res.status(201).json({ message: "Bid created successfully", bid });
-  } catch (err) {
-    console.error("Error in posting bid route: ", err.message);
-    return res.status(500).json({ message: "Server Error!" });
+  } catch (error) {
+    console.error(error.response?.data);
   }
 };
 

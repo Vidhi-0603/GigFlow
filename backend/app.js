@@ -3,10 +3,18 @@ const gigRoutes = require("./src/routes/gig.route.js");
 const bidRoutes = require("./src/routes/bid.route.js");
 
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
 const dotenv = require("dotenv");
 dotenv.config({ path: "./.env" });
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
 const connectDB = require("./src/config/mongo.config.js");
 connectDB();
