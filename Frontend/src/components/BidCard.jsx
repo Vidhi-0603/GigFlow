@@ -2,13 +2,14 @@ import { Mail } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import axiosInstance from "../utils/axiosInstance";
 
-export const BidCard = ({ bid, gig , onBidHired}) => {
+export const BidCard = ({ bid, gig, onBidHired, onGigAssigned }) => {
   const { user } = useAuth();
   const acceptBid = async () => {
     try {
       const { data } = await axiosInstance.patch(`/api/bids/${bid?._id}/hire`);
       alert(data.message);
       onBidHired(bid._id);
+      onGigAssigned(gig._id);
     } catch (error) {
       console.error("Error hiring bid:", error);
       alert("Failed to hire bid. Please try again.");

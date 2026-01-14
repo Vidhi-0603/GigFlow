@@ -27,6 +27,14 @@ export const AllGigs = () => {
     return () => clearTimeout(timer);
   }, [searchTerm]);
 
+  const handleGigAssigned = (gigId) => {
+    setGigs((prevGigs) =>
+      prevGigs.map((gig) =>
+        gig._id === gigId ? { ...gig, status: "assigned" } : gig
+      )
+    );
+  };
+
   return (
     <>
       <div>
@@ -54,7 +62,11 @@ export const AllGigs = () => {
         {/* Gigs Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {gigs.map((gig) => (
-            <GigCard key={gig._id} gig={gig} />
+            <GigCard
+              key={gig._id}
+              gig={gig}
+              onGigAssigned={handleGigAssigned}
+            />
           ))}
         </div>
 

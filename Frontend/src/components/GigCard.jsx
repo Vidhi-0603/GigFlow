@@ -9,7 +9,7 @@ import axiosInstance from "../utils/axiosInstance";
 import { useState } from "react";
 import { BidCard } from "./BidCard";
 
-export const GigCard = ({ gig }) => {
+export const GigCard = ({ gig, onGigAssigned }) => {
   const { user } = useAuth();
   const [message, setMessage] = useState("");
   const [bids, setBids] = useState([]);
@@ -37,9 +37,8 @@ export const GigCard = ({ gig }) => {
       const { data } = await axiosInstance.get("/api/bids/", {
         params: { gigId: gig._id },
       });
-        setBids(data.bids);
-        console.log("bids:", data.bids);
-        
+      setBids(data.bids);
+      console.log("bids:", data.bids);
 
       setIsBidModalOpen(true);
     } catch (error) {
@@ -222,6 +221,7 @@ export const GigCard = ({ gig }) => {
                   bid={bid}
                   gig={gig}
                   onBidHired={handleBidHired}
+                  onGigAssigned={onGigAssigned}
                 />
               ))}
           </div>
