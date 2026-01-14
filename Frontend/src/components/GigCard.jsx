@@ -20,6 +20,17 @@ export const GigCard = ({ gig }) => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const handleBidHired = (hiredBidId) => {
+    setBids((prevBids) =>
+      prevBids.map((bid) => {
+        if (bid._id === hiredBidId) {
+          return { ...bid, status: "hired" };
+        }
+        return { ...bid, status: "rejected" };
+      })
+    );
+  };
+
   const viewAllBids = async () => {
     setIsLoadingBids(true);
     try {
@@ -205,7 +216,14 @@ export const GigCard = ({ gig }) => {
             )}
 
             {!isLoadingBids &&
-              bids.map((bid) => <BidCard key={bid._id} bid={bid} gig={gig} />)}
+              bids.map((bid) => (
+                <BidCard
+                  key={bid._id}
+                  bid={bid}
+                  gig={gig}
+                  onBidHired={handleBidHired}
+                />
+              ))}
           </div>
         </div>
       )}
