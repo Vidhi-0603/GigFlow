@@ -45,8 +45,8 @@ export const Header = () => {
       setDescription("");
       setBudget(0);
     } catch (error) {
-      console.error("Error posting bid:", error);
-      alert("Failed to post bid. Please try again.");
+      console.error("Error posting gig:", error);
+      alert("Failed to post gig. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -184,7 +184,7 @@ export const Header = () => {
                 disabled={isSubmitting || !title.trim()}
                 className="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? "Posting..." : "Post Bid"}
+                {isSubmitting ? "Posting..." : "Post Gig"}
               </button>
             </div>
           </div>
